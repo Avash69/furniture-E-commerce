@@ -28,21 +28,21 @@ class DashboardView extends StatelessWidget {
                       child: CircleAvatar(
                         radius: 18,
                         backgroundColor: Colors.greenAccent,
-                      )
+                      ),
                     ),
                     Positioned(
                       right: 10,
                       child: CircleAvatar(
                         radius: 18,
                         backgroundColor: Colors.teal,
-                      )
+                      ),
                     ),
                     Positioned(
                       top: 0,
                       child: CircleAvatar(
                         radius: 20,
                         backgroundColor: Colors.green[700],
-                      )
+                      ),
                     ),
                   ],
                 ),
@@ -50,23 +50,20 @@ class DashboardView extends StatelessWidget {
               SizedBox(height: 32),
 
               Text(
-                'Yatra',
+                'Furniture E-commerce',
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black
+                  color: Colors.black,
                 ),
               ),
-              
+
               SizedBox(height: 8),
 
               Text(
                 'MAKE YOUR HOME BEAUTIFUL!',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black87
-                ),
+                style: TextStyle(fontSize: 16, color: Colors.black87),
               ),
 
               SizedBox(height: 40),
@@ -74,25 +71,22 @@ class DashboardView extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: (){
+                  onPressed: () {
                     //NAvigation handle:
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF00723F),
                     padding: EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(19)
-                    )
+                      borderRadius: BorderRadius.circular(19),
+                    ),
                   ),
                   child: Text(
                     'The best simple place where you discover most wonderful furnitures and make your home beautiful',
-                    style: TextStyle(
-                      fontSize: 19,
-                      color: Colors.white
-                    ),
-                  )
+                    style: TextStyle(fontSize: 19, color: Colors.white),
                   ),
-                ), 
+                ),
+              ),
             ],
           ),
         ),

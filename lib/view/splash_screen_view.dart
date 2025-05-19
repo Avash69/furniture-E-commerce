@@ -93,7 +93,7 @@ class SplashScreenView extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) =>  SignInApp()),
+                  MaterialPageRoute(builder: (context) =>  SignInView()),
                 );
               },
               style: ElevatedButton.styleFrom(
