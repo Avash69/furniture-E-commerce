@@ -15,9 +15,9 @@ class HomeView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header
-              Text('Welcome to ', style: DashboardTheme.greetingStyle),
+              Text('Welcome to Furniture  ', style: DashboardTheme.greetingStyle),
               const SizedBox(height: 10),
-              Text('Your travel guide across the city', style: DashboardTheme.subGreetingStyle),
+              Text('Enjoy Shopping', style: DashboardTheme.subGreetingStyle),
 
               const SizedBox(height: 30),
 
@@ -34,14 +34,10 @@ class HomeView extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(1),
                     child: ClipOval(
-                      child: Image.asset(
-                        'assets/icons/yatra(logo).png',
-                        fit: BoxFit.contain,
                       ),
                     ),
                   ),
                 ),
-              ),
 
               const SizedBox(height: 30),
 

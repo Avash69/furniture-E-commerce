@@ -1,60 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:furniture_ecommerce/view/bottom_navigation/home_view.dart';
-import 'package:furniture_ecommerce/view/bottom_navigation/profile.dart';
-
-
 
 class DashboardView extends StatefulWidget {
-  const DashboardView({super.key});
+   final Function(int) onTabSelected;
+  final int currentIndex;
+  
+  const DashboardView ({
+    super.key,
+    required this.onTabSelected,
+    required this.currentIndex,
+  });
 
   @override
   State<DashboardView> createState() => _DashboardViewState();
 }
-
 class _DashboardViewState extends State<DashboardView> {
-  int _selectedIndex = 0;
-
-  final List<Widget> _pages = const [
-    HomeView(),
-    ProfileView()
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        backgroundColor: const Color(0xFF1A3C34),
-        selectedItemColor: const Color(0xFF00C853),
-        unselectedItemColor: Colors.grey.shade400,
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.alt_route),
-            label: 'Routes',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.book),
-            label: 'Bookings',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-      ),
+    return BottomNavigationBar(
+      currentIndex: widget.currentIndex,
+      onTap: widget.onTabSelected,
+      selectedItemColor: Colors.brown.shade700,
+      unselectedItemColor: Colors.grey,
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.white,
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.crib),
+          label: 'Categories',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.shopping_cart),
+          label: 'Cart',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.usb),
+          label: 'Profile',
+        ),
+      ],
     );
   }
 }
+
+

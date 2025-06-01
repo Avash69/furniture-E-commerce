@@ -327,7 +327,12 @@ class _SignInViewState extends State<SignInView> {
     if (isValid) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const DashboardView()),
+        MaterialPageRoute(
+          builder: (_) => DashboardView(
+            onTabSelected: (int index) {},
+            currentIndex: 0,
+          ),
+        ),
       );
     }
   }
