@@ -313,8 +313,8 @@ class _SignInViewState extends State<SignInView> {
         isValid ? 'Login successful' : 'Invalid credentials',
         style: const TextStyle(
           fontFamily: 'OpenSans-Bold',
-          color: Colors.white
-          ),
+          color: Colors.white,
+        ),
       ),
       backgroundColor: isValid ? Colors.green : Colors.red,
       behavior: SnackBarBehavior.floating,
@@ -328,10 +328,9 @@ class _SignInViewState extends State<SignInView> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (_) => DashboardView(
-            onTabSelected: (int index) {},
-            currentIndex: 0,
-          ),
+          builder:
+              (_) =>
+                  const DashboardView(), // Make sure DashboardView is defined in dashboard_view.dart
         ),
       );
     }
@@ -450,7 +449,7 @@ class _SignInViewState extends State<SignInView> {
 
               const SizedBox(height: 16),
 
-              // Sign Up Button (Secondary)
+              // Sign Up Button
               OutlinedButton(
                 onPressed: () {
                   Navigator.push(
