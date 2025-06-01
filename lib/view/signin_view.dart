@@ -311,7 +311,10 @@ class _SignInViewState extends State<SignInView> {
     final snackBar = SnackBar(
       content: Text(
         isValid ? 'Login successful' : 'Invalid credentials',
-        style: const TextStyle(color: Colors.white),
+        style: const TextStyle(
+          fontFamily: 'OpenSans-Bold',
+          color: Colors.white
+          ),
       ),
       backgroundColor: isValid ? Colors.green : Colors.red,
       behavior: SnackBarBehavior.floating,
@@ -324,7 +327,7 @@ class _SignInViewState extends State<SignInView> {
     if (isValid) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const DashboardView()),
+        MaterialPageRoute(builder: (_) => const Dashboard()),
       );
     }
   }
