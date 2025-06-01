@@ -287,8 +287,8 @@
 //   }
 // }
 import 'package:flutter/material.dart';
+import 'package:furniture_ecommerce/view/bottom_navigation/dashboard_view.dart';
 import '../model/signin_model.dart';
-import 'dashboard_view.dart';
 import 'signup_view.dart';
 
 class SignInView extends StatefulWidget {
@@ -327,7 +327,7 @@ class _SignInViewState extends State<SignInView> {
     if (isValid) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const Dashboard()),
+        MaterialPageRoute(builder: (_) => const DashboardView()),
       );
     }
   }

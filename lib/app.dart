@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:furniture_ecommerce/view/dashboard_view.dart';
 import 'package:furniture_ecommerce/view/splash_screen_view.dart';
 // import 'package:furniture_ecoomerce /view/splash_screen_view.dart';
 class App extends StatelessWidget {
