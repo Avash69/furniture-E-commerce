@@ -1,5 +1,5 @@
-class SplashModel {
-  Future<void> initApp() async{
-    await Future.delayed(Duration(seconds: 3));
-  }
-}
+// class SplashModel {
+//   Future<void> initApp() async{
+//     await Future.delayed(Duration(seconds: 3));
+//   }
+// }

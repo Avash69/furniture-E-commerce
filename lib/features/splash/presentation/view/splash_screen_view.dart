@@ -1,77 +1,73 @@
 import 'package:flutter/material.dart';
-import 'package:furniture_ecommerce/view/signin_view.dart'; // Adjust based on your project structure
+import 'package:furniture_ecommerce/features/auth/presentation/view/login_page_view.dart';
+import 'dart:async';
 
 
-class SplashScreenView extends StatelessWidget {
-  const SplashScreenView({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 6), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/splash_background.png'), // Replace with your image
-            fit: BoxFit.cover,
-          ),
-        ),
+      body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 100),
-            const Text(
-              "MAKE YOUR",
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.black87,
-                letterSpacing: 1.2,
-              ),
+            const Spacer(),
+
+            // Logo
+            Image.asset(
+              'assets/logo/rolo_logo.jpeg',
+              width: 200,
             ),
-            const SizedBox(height: 4),
+
+            const SizedBox(height: 30),
+
+            // App name
             const Text(
-              "HOME BEAUTIFUL",
+              'Furniture Ecommerce',
               style: TextStyle(
-                fontSize: 26,
+                color: Colors.white,
+                fontSize: 32,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
-                letterSpacing: 1.5,
               ),
             ),
-            const SizedBox(height: 16),
-            const Text(
-              "The best simple place where you\ndiscover most wonderful furnitures\nand make your home beautiful",
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.black54,
-                height: 1.5,
-              ),
-            ),
-            const SizedBox(height: 40),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) =>  SignInView()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+
+            const SizedBox(height: 10),
+
+            // Tagline
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: Text(
+                'Crafted Elegance from Nepal – Welcome to Furniture Ecommerce',
+                style: TextStyle(
+                  color: Colors.white70,
+                  fontSize: 16,
                 ),
-              ),
-              child: const Text(
-                "Get Started",
-                style: TextStyle(color: Colors.white),
+                textAlign: TextAlign.center,
               ),
             ),
+
+            const Spacer(),
           ],
         ),
       ),
     );
   }
 }
-
