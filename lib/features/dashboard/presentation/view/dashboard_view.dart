@@ -1,118 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:furniture_ecommerce/features/bottom_navigation/presentation/view/bottom_navigation_view.dart';
+import 'package:furniture_ecommerce/view/bottom_navigation/categories_view.dart';
+import 'package:furniture_ecommerce/view/bottom_navigation/home_view.dart';
+import 'package:furniture_ecommerce/view/bottom_navigation/profile.dart';
+import 'package:furniture_ecommerce/view/bottom_navigation/shopping_cart_view.dart';
 
+// import 'profile_view.dart';
 
-class DashboardView extends StatelessWidget {
+class DashboardView extends StatefulWidget {
   const DashboardView({super.key});
 
   @override
+  State<DashboardView> createState() => _DashboardView();
+}
+
+class _DashboardView extends State<DashboardView> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    const HomeView(),
+    CategoriesView(),
+    const ShoppingCartView(),
+    const ProfileView(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  final List<BottomNavigationBarItem> _bottomItems = [
+    const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+    const BottomNavigationBarItem(icon: Icon(Icons.chair), label: 'Categories'),
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.shopping_cart),
+      label: 'Cart',
+    ),
+    const BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+  ];
+
+  @override
   Widget build(BuildContext context) {
-    List<Map<String, String>> bagItems = [
-    ];
-
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Homepage', style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30)),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {},
-          ),
-          const Padding(
-            padding: EdgeInsets.only(right: 8.0),
-            child: CircleAvatar(
-              radius: 18,
-              backgroundImage: AssetImage('assets/images/user_logo.png'),
-            ),
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          children: [
-            TextField(
-              style: const TextStyle(color: Colors.white),
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.grey[850],
-                prefixIcon: const Icon(Icons.search, color: Colors.white),
-                hintText: 'Search for luxury items...',
-                hintStyle: const TextStyle(color: Colors.white54),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-
-            const Text(
-              'Explore the ROLO Collection',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.amber,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 20),
-
-            Expanded(
-              child: ListView.builder(
-                itemCount: bagItems.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.grey[900],
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                bagItems[index]['title']!,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              const SizedBox(height: 10),
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Text("Shop Now"),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.asset(
-                            bagItems[index]['image']!,
-                            width: 120,
-                            height: 100,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationView(
-        currentIndex: 0,
-        onTap: (index) {
-        },
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        items: _bottomItems,
+        selectedItemColor: Colors.brown.shade800,
+        unselectedItemColor: Colors.grey,
+        showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
       ),
     );
   }
