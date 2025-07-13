@@ -4,21 +4,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:furniture_ecommerce/features/auth/presentation/view/signup_page_view.dart';
 import 'package:furniture_ecommerce/features/auth/presentation/view_model/login_view_model/login_event.dart';
 import 'package:furniture_ecommerce/features/auth/presentation/view_model/login_view_model/login_view_model.dart';
+
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
-    final _emailController = TextEditingController();
-    final _passwordController = TextEditingController();
+    final formKey = GlobalKey<FormState>();
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
 
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
           child: Form(
-            key: _formKey,
+            key: formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -45,7 +46,7 @@ class LoginScreen extends StatelessWidget {
 
                 // Email field
                 TextFormField(
-                  controller: _emailController,
+                  controller: emailController,
                   style: const TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     hintText: 'Your email address',
@@ -68,7 +69,7 @@ class LoginScreen extends StatelessWidget {
 
                 // Password field
                 TextFormField(
-                  controller: _passwordController,
+                  controller: passwordController,
                   obscureText: true,
                   style: const TextStyle(color: Colors.white),
                   decoration: InputDecoration(
@@ -82,8 +83,8 @@ class LoginScreen extends StatelessWidget {
                       borderSide: BorderSide.none,
                     ),
                   ),
-                  validator: (value) =>
-                      value!.isEmpty ? 'Enter password' : null,
+                  validator:
+                      (value) => value!.isEmpty ? 'Enter password' : null,
                 ),
                 const SizedBox(height: 8),
 
@@ -106,14 +107,14 @@ class LoginScreen extends StatelessWidget {
                   height: 48,
                   child: ElevatedButton(
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
+                      if (formKey.currentState!.validate()) {
                         context.read<LoginViewModel>().add(
-                              LoginWithEmailAndPasswordEvent(
-                                context: context,
-                                email: _emailController.text.trim(),
-                                password: _passwordController.text.trim(),
-                              ),
-                            );
+                          LoginWithEmailAndPasswordEvent(
+                            context: context,
+                            email: emailController.text.trim(),
+                            password: passwordController.text.trim(),
+                          ),
+                        );
                       }
                     },
                     child: const Text('Login'),
@@ -134,15 +135,16 @@ class LoginScreen extends StatelessWidget {
                             color: Colors.amber,
                             fontWeight: FontWeight.bold,
                           ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) =>  SignUpScreen(),
-                                ),
-                              );
-                            },
+                          recognizer:
+                              TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => SignUpScreen(),
+                                    ),
+                                  );
+                                },
                         ),
                       ],
                     ),
