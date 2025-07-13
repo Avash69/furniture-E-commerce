@@ -4,6 +4,7 @@ import 'package:furniture_ecommerce/app/use_case/usecase.dart';
 import 'package:furniture_ecommerce/core/error/failure.dart';
 import 'package:furniture_ecommerce/features/auth/domain/repository/user_repository.dart';
 
+import '../../../../../test/features/auth/domain/use_case/user_login_usecase_test.dart';
 
 class LoginParams extends Equatable {
   final String email;
@@ -19,14 +20,13 @@ class LoginParams extends Equatable {
 class UserLoginUsecase implements UsecaseWithParams<String, LoginParams> {
   final IUserRepository _userRepository;
 
-  UserLoginUsecase({required IUserRepository userRepository})
-    : _userRepository = userRepository;
+  UserLoginUsecase({
+    required IUserRepository userRepository,
+    required MockTokenSharedPrefs tokenSharedPrefs,
+  }) : _userRepository = userRepository;
 
   @override
   Future<Either<Failure, String>> call(LoginParams params) async {
-    return await _userRepository.loginUser(
-      params.email,
-      params.password,
-    );
+    return await _userRepository.loginUser(params.email, params.password);
   }
 }
